@@ -1,6 +1,6 @@
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import logo from "../../assets/coffee_logo.png";
-import { NavLink, Link } from "react-router"
+import { NavLink, Link } from "react-router";
 
 const Menu = () => {
   return (
@@ -17,11 +17,11 @@ const Menu = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link className="nav-link" to={"/"}>Inicio</Nav.Link>
-            <Nav.Link className="nav-link" to={"/administrador"}>Administrador</Nav.Link>
-            <Button className="nav-link " to={"/login"} >
+            <NavLink className="nav-link" to={"/"}>Inicio</NavLink>
+            <NavLink className="nav-link" to={"/administrador"}>Administrador</NavLink>
+             <NavLink className="nav-link" to={"/login"}>
               Login
-            </Button>
+            </NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>
