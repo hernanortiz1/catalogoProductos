@@ -14,12 +14,12 @@ function App() {
   const usuarioLogueado =
     JSON.parse(sessionStorage.getItem("userKey")) || false;
   // no es necesario JSON en booleanos
-  const [usuario, setUsuarioAdmin] = useState(usuarioLogueado);
+  const [usuarioAdmin, setUsuarioAdmin] = useState(usuarioLogueado);
 
   return (
     <>
       <BrowserRouter>
-        <Menu></Menu>
+        <Menu usuarioAdmin={usuarioAdmin} setUsuarioAdmin={setUsuarioAdmin}></Menu>
         <main>
           <Routes>
             <Route path="/" element={<Inicio />}></Route>
