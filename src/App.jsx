@@ -16,6 +16,7 @@ function App() {
     JSON.parse(sessionStorage.getItem("userKey")) || false;
   // no es necesario JSON en booleanos
   const [usuarioAdmin, setUsuarioAdmin] = useState(usuarioLogueado);
+  const [productos, setProductos] = useState([])
 
   return (
     <>
@@ -40,7 +41,7 @@ function App() {
               element={<ProtectorAdmin isAdmin={usuarioAdmin}></ProtectorAdmin>}
             >
               {/* componente que renderiza cuando va a ruta administrador */}
-              <Route index element={<Administrador></Administrador>}></Route>
+              <Route index element={<Administrador setProductos={setProductos} productos={productos}></Administrador>}></Route>
 
               <Route
                 path="crear"
