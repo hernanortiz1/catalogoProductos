@@ -3,10 +3,9 @@ import ItemProducto from "./producto/ItemProducto";
 import { productosData } from "../../data/ProductosPrueba";
 
 const Administrador = ({ productos, setProductos }) => {
-
-  const cargarProductosPrueba = ()=>{
-    setProductos(productosData)
-  }
+  const cargarProductosPrueba = () => {
+    setProductos(productosData);
+  };
   return (
     <section className="container mainSection">
       <div className="d-flex justify-content-between align-items-center mt-5">
@@ -15,7 +14,10 @@ const Administrador = ({ productos, setProductos }) => {
           <Button className="btn btn-primary">
             <i className="bi bi-file-earmark-plus"></i>
           </Button>
-          <Button className="btn btn-info ms-2 text-light" onClick={cargarProductosPrueba}>
+          <Button
+            className="btn btn-info ms-2 text-light"
+            onClick={cargarProductosPrueba}
+          >
             <i className="bi bi-database-fill-add "></i>
           </Button>
         </div>
@@ -33,11 +35,13 @@ const Administrador = ({ productos, setProductos }) => {
           </tr>
         </thead>
         <tbody>
-          {
-            productos.map((producto, indice)=> <ItemProducto key={producto.id} producto={producto} fila={indice+1}/>
-)
-          }
-         
+          {productos.map((producto, indice) => (
+            <ItemProducto
+              key={producto.id}
+              producto={producto}
+              fila={indice + 1}
+            />
+          ))}
         </tbody>
       </Table>
     </section>

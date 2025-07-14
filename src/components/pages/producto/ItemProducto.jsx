@@ -1,8 +1,8 @@
 import { Button } from "react-bootstrap";
 
-const ItemProducto = ({producto, fila}) => {
+const ItemProducto = ({ producto, fila }) => {
   return (
-   <tr>
+    <tr>
       <td className="text-center">{fila}</td>
       <td>{producto.nombreProducto}</td>
       <td className="text-end">{producto.precio}</td>

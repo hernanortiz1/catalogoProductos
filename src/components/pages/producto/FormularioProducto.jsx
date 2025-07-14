@@ -1,21 +1,19 @@
 import { Form, Button } from "react-bootstrap";
 
 const FormularioProducto = () => {
- 
   return (
     <section className="container mainSection">
       <h1 className="display-4 mt-5">Nuevo producto</h1>
       <hr />
-      <Form className="my-4" >
+      <Form className="my-4">
         <Form.Group className="mb-3" controlId="formNombreProdcuto">
           <Form.Label>Producto*</Form.Label>
-          <Form.Control type="text" placeholder="Ej: Cafe"  />
+          <Form.Control type="text" placeholder="Ej: Cafe" />
           <Form.Text className="text-danger"></Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formPrecio">
           <Form.Label>Precio*</Form.Label>
-          <Form.Control type="number" placeholder="Ej: 50"
-             />
+          <Form.Control type="number" placeholder="Ej: 50" />
           <Form.Text className="text-danger"></Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formImagen">
@@ -23,13 +21,12 @@ const FormularioProducto = () => {
           <Form.Control
             type="text"
             placeholder="Ej: https://www.pexels.com/es-es/vans-en-blanco-y-negro-fuera-de-la-decoracion-para-colgar-en-la-pared-1230679/"
-           
           />
           <Form.Text className="text-danger"></Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formPrecio">
           <Form.Label>Categoría*</Form.Label>
-          <Form.Select >
+          <Form.Select>
             <option value="">Seleccione una opcion</option>
             <option value="Infusiones">Infusiones</option>
             <option value="Batidos">Batidos</option>
@@ -44,7 +41,6 @@ const FormularioProducto = () => {
             type="text"
             placeholder="Ej: Una taza de café suave y aromático."
             as="textarea"
-           
           />
           <Form.Text className="text-danger"></Form.Text>
         </Form.Group>
@@ -54,7 +50,7 @@ const FormularioProducto = () => {
             type="text"
             placeholder="Ej: El café americano es una bebida caliente que consiste en un espresso diluido con agua caliente, lo que resulta en una taza de café suave y aromático. Es una opción popular para aquellos que prefieren un café menos intenso que el espresso tradicional. Perfecto para disfrutar en cualquier momento del día."
             as="textarea"
-           rows={4}
+            rows={4}
           />
           <Form.Text className="text-danger"></Form.Text>
         </Form.Group>

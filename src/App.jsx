@@ -8,16 +8,22 @@ import CardProducto from "./components/pages/producto/CardProducto";
 import FormularioProducto from "./components/pages/producto/FormularioProducto";
 import Footer from "./components/shared/Footer";
 import Menu from "./components/shared/Menu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProtectorAdmin from "./components/routes/ProtectorAdmin";
 
 function App() {
   const usuarioLogueado =
     JSON.parse(sessionStorage.getItem("userKey")) || false;
   // no es necesario JSON en booleanos
+  const productosLocalStorage =
+    JSON.parse(localStorage.getItem("catalogoProductos")) || [];
   const [usuarioAdmin, setUsuarioAdmin] = useState(usuarioLogueado);
-  const [productos, setProductos] = useState([])
+  const [productos, setProductos] = useState(productosLocalStorage);
 
+  useEffect(() => {
+    localStorage.setItem("catalogoProductos", JSON.stringify(productos));
+  }, [productos]);
+  // se ejecuta en montaje
   return (
     <>
       <BrowserRouter>
@@ -27,7 +33,7 @@ function App() {
         ></Menu>
         <main>
           <Routes>
-            <Route path="/" element={<Inicio />}></Route>
+            <Route path="/" element={<Inicio productos={productos} />}></Route>
             <Route
               path="/detalle"
               element={<DetalleProducto></DetalleProducto>}
@@ -41,7 +47,15 @@ function App() {
               element={<ProtectorAdmin isAdmin={usuarioAdmin}></ProtectorAdmin>}
             >
               {/* componente que renderiza cuando va a ruta administrador */}
-              <Route index element={<Administrador setProductos={setProductos} productos={productos}></Administrador>}></Route>
+              <Route
+                index
+                element={
+                  <Administrador
+                    setProductos={setProductos}
+                    productos={productos}
+                  ></Administrador>
+                }
+              ></Route>
 
               <Route
                 path="crear"
