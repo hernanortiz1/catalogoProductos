@@ -1,6 +1,6 @@
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 const FormularioProducto = ({ crearProducto }) => {
   const {
@@ -10,7 +10,7 @@ const FormularioProducto = ({ crearProducto }) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (producto) => {
+  const onSubmit = ({ producto }) => {
     console.log(producto);
     //crear prod nuevo
     if (crearProducto(producto)) {

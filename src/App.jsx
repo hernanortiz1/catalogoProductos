@@ -29,6 +29,12 @@ const crearProducto = (productoNuevo) =>{
   return true;
 }
 
+const borrarProducto = (idProducto) =>{
+  const productosFiltrados = productos.filter((itemProducto)=> itemProducto.id !== idProducto)
+  setProductos(productosFiltrados)
+  return true;
+}
+
   useEffect(() => {
     localStorage.setItem("catalogoProductos", JSON.stringify(productos));
   }, [productos]);
@@ -62,6 +68,7 @@ const crearProducto = (productoNuevo) =>{
                   <Administrador
                     setProductos={setProductos}
                     productos={productos}
+                    borrarProducto={borrarProducto}
                   ></Administrador>
                 }
               ></Route>

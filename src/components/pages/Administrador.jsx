@@ -3,7 +3,7 @@ import ItemProducto from "./producto/ItemProducto";
 import { productosData } from "../../data/ProductosPrueba";
 import { Link } from "react-router";
 
-const Administrador = ({ productos, setProductos }) => {
+const Administrador = ({ productos, setProductos, borrarProducto }) => {
   const cargarProductosPrueba = () => {
     setProductos(productosData);
   };
@@ -41,6 +41,7 @@ const Administrador = ({ productos, setProductos }) => {
               key={producto.id}
               producto={producto}
               fila={indice + 1}
+              borrarProducto={borrarProducto}
             />
           ))}
         </tbody>
