@@ -19,6 +19,7 @@ const FormularioProducto = ({ crearProducto }) => {
         text: `El producto ${producto.nombreProducto} fue creado correctamente`,
         icon: "success",
       });
+      reset();
     }
   };
 
