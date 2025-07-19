@@ -4,7 +4,12 @@ import { useForm } from "react-hook-form";
 import { useParams } from "react-router";
 import Swal from "sweetalert2";
 
-const FormularioProducto = ({ crearProducto, titulo, buscarProducto }) => {
+const FormularioProducto = ({
+  crearProducto,
+  titulo,
+  buscarProducto,
+  editarProducto,
+}) => {
   const {
     register,
     handleSubmit,
@@ -29,16 +34,25 @@ const FormularioProducto = ({ crearProducto, titulo, buscarProducto }) => {
     }
   }, []);
 
-  const onSubmit = ({ producto }) => {
-    console.log(producto);
-    //crear prod nuevo
-    if (crearProducto(producto)) {
-      Swal.fire({
-        title: "Producto creado",
-        text: `El producto ${producto.nombreProducto} fue creado correctamente`,
-        icon: "success",
-      });
-      reset();
+  const onSubmit = (producto ) => {
+    if (titulo === "Crear producto") {
+      if (crearProducto(producto)) {
+        Swal.fire({
+          title: "Producto creado",
+          text: `El producto ${producto.nombreProducto} fue creado correctamente`,
+          icon: "success",
+        });
+        reset();
+      }
+    } else {
+      // tomar datos del form
+      if (editarProducto(id, producto)) {
+        Swal.fire({
+          title: "Producto editado",
+          text: `El producto ${producto.nombreProducto} fue editado correctamente`,
+          icon: "success",
+        });
+      }
     }
   };
 

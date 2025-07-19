@@ -44,6 +44,25 @@ function App() {
     return productoBuscado;
   };
 
+  const editarProducto = (idProducto, productoActualizado)=>{
+    const productosEditados = productos.map((itemProducto)=>{
+      if(itemProducto.id === idProducto){
+        return {
+        //  del array item tomo los nuevos valores menos el id y lo copio en prod actualizado
+          ...itemProducto,
+          ...productoActualizado
+        }
+      }else{
+        return itemProducto
+      }
+    })
+    console.log(productosEditados)
+    // actualizar state
+    setProductos(productosEditados)
+    // return un bool si se edito
+    return true
+  }
+
   useEffect(() => {
     localStorage.setItem("catalogoProductos", JSON.stringify(productos));
   }, [productos]);
@@ -94,7 +113,7 @@ function App() {
               ></Route>
               <Route
                 path="editar/:id"
-                element={<FormularioProducto titulo={"Editar producto"} buscarProducto={buscarProducto}></FormularioProducto>}
+                element={<FormularioProducto titulo={"Editar producto"} buscarProducto={buscarProducto} editarProducto={editarProducto}></FormularioProducto>}
               ></Route>
             </Route>
 
