@@ -10,7 +10,7 @@ import Footer from "./components/shared/Footer";
 import Menu from "./components/shared/Menu";
 import { useEffect, useState } from "react";
 import ProtectorAdmin from "./components/routes/ProtectorAdmin";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const usuarioLogueado =
@@ -21,24 +21,34 @@ function App() {
   const [usuarioAdmin, setUsuarioAdmin] = useState(usuarioLogueado);
   const [productos, setProductos] = useState(productosLocalStorage);
 
-const crearProducto = (productoNuevo) =>{
-  //agregar id 
-  productoNuevo.id = uuidv4();
-  //agregar prod al state de prod 
-  setProductos([...productos, productoNuevo])
-  return true;
-}
+  const crearProducto = (productoNuevo) => {
+    //agregar id
+    productoNuevo.id = uuidv4();
+    //agregar prod al state de prod
+    setProductos([...productos, productoNuevo]);
+    return true;
+  };
 
-const borrarProducto = (idProducto) =>{
-  const productosFiltrados = productos.filter((itemProducto)=> itemProducto.id !== idProducto)
-  setProductos(productosFiltrados)
-  return true;
-}
+  const borrarProducto = (idProducto) => {
+    const productosFiltrados = productos.filter(
+      (itemProducto) => itemProducto.id !== idProducto
+    );
+    setProductos(productosFiltrados);
+    return true;
+  };
+
+  const buscarProducto = (idProducto) => {
+    const productoBuscado = productos.find(
+      (itemProducto) => itemProducto.id === idProducto
+    );
+    return productoBuscado;
+  };
 
   useEffect(() => {
     localStorage.setItem("catalogoProductos", JSON.stringify(productos));
   }, [productos]);
   // se ejecuta en montaje
+
   return (
     <>
       <BrowserRouter>
@@ -75,11 +85,16 @@ const borrarProducto = (idProducto) =>{
 
               <Route
                 path="crear"
-                element={<FormularioProducto crearProducto={crearProducto}></FormularioProducto>}
+                element={
+                  <FormularioProducto
+                  titulo={"Crear producto"}  
+                  crearProducto={crearProducto}
+                  ></FormularioProducto>
+                }
               ></Route>
               <Route
-                path="editar"
-                element={<FormularioProducto></FormularioProducto>}
+                path="editar/:id"
+                element={<FormularioProducto titulo={"Editar producto"} buscarProducto={buscarProducto}></FormularioProducto>}
               ></Route>
             </Route>
 
