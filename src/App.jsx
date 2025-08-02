@@ -79,13 +79,15 @@ function App() {
           <Routes>
             <Route path="/" element={<Inicio productos={productos} />}></Route>
             <Route
-              path="/detalle"
-              element={<DetalleProducto></DetalleProducto>}
+              path="/detalle/:id"
+              element={<DetalleProducto buscarProducto={buscarProducto}></DetalleProducto>}
             ></Route>
             <Route
               path="/login"
               element={<Login setUsuarioAdmin={setUsuarioAdmin}></Login>}
             ></Route>
+
+            
             <Route
               path="/administrador"
               element={<ProtectorAdmin isAdmin={usuarioAdmin}></ProtectorAdmin>}
