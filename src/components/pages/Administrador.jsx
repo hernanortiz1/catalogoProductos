@@ -62,6 +62,7 @@ const obtenerProductos = async ()=>{
               producto={producto}
               fila={indice + 1}
               borrarProducto={borrarProducto}
+              setListaProductos={setListaProductos}
             />
           ))}
         </tbody>
