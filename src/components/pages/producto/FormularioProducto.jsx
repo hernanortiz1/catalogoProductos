@@ -3,9 +3,9 @@ import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router";
 import Swal from "sweetalert2";
+import { crearProducto } from "../../../helpers/queries";
 
 const FormularioProducto = ({
-  crearProducto,
   titulo,
   buscarProducto,
   editarProducto,
@@ -34,9 +34,11 @@ const FormularioProducto = ({
     }
   }, []);
 
-  const onSubmit = (producto ) => {
+  const onSubmit = async(producto ) => {
     if (titulo === "Crear producto") {
-      if (crearProducto(producto)) {
+      const respuesta = await crearProducto(producto)
+
+      if (respuesta.status === 201) {
         Swal.fire({
           title: "Producto creado",
           text: `El producto ${producto.nombreProducto} fue creado correctamente`,

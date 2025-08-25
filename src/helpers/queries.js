@@ -1,4 +1,4 @@
-const urlproductos = import.meta.env.VITE_API_PRODUCTOS
+const urlproductos = import.meta.env.VITE_API_PRODUCTO
 
 console.log(urlproductos);
 
