@@ -1,19 +1,29 @@
 import { useEffect, useState } from "react";
 import { Container, Card, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router";
+import { obtenerProductoPorID} from "../../helpers/queries.js";
 
-const DetalleProducto = ({buscarProducto}) => {
+const DetalleProducto = () => {
   const {id} = useParams()
   const [producto, setProducto] = useState({})
   
   useEffect(
     ()=>{
-      const productoBuscado = buscarProducto(id)
-      setProducto(productoBuscado)
-
+      obtenerProducto()
     },[]
   )
+  const obtenerProducto = async () => {
+  const respuesta = await obtenerProductoPorID(id)
+    if (respuesta.status ===200) {
+      //buscar el prod por id y dibujar en form
+      const respuesta = await obtenerProductoPorID(id);
 
+      if (respuesta.status === 200) {
+        const productoBuscado = await respuesta.json();
+        setProducto(productoBuscado)
+      }
+    }
+  };
 
   return (
     <Container className="my-3 mainSection">

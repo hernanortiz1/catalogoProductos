@@ -3,7 +3,7 @@ import ItemProducto from "./producto/ItemProducto";
 import { Link } from "react-router";
 import { useState } from "react";
 import { useEffect } from "react";
-import { leerProductos } from "../../helpers/queries";
+import { leerProductos } from "../../helpers/queries.js";
 
 const Administrador = ({ productos, setProductos, borrarProducto }) => {
 //nuevo
