@@ -14,8 +14,8 @@ import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const usuarioLogueado =
-    JSON.parse(sessionStorage.getItem("userKey")) || false;
-  // no es necesario JSON en booleanos
+    JSON.parse(sessionStorage.getItem("userKey")) || {};
+
   const productosLocalStorage =
     JSON.parse(localStorage.getItem("catalogoProductos")) || [];
   const [usuarioAdmin, setUsuarioAdmin] = useState(usuarioLogueado);
@@ -66,6 +66,10 @@ function App() {
   useEffect(() => {
     localStorage.setItem("catalogoProductos", JSON.stringify(productos));
   }, [productos]);
+
+  useEffect(() => {
+    sessionStorage.setItem("userKey", JSON.stringify(usuarioAdmin));
+  }, [usuarioAdmin]);
   // se ejecuta en montaje
 
   return (

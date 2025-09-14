@@ -5,9 +5,8 @@ import { NavLink, Link, useNavigate } from "react-router";
 const Menu = ({ usuarioAdmin, setUsuarioAdmin }) => {
   const navegacion = useNavigate();
   const logout = () => {
-    setUsuarioAdmin(false);
-    // limpio de sesion lo que tenga esa key
-    sessionStorage.removeItem("userKey");
+    //logout con objeto vacio
+    setUsuarioAdmin({});
     // redirecciono al inicio
     navegacion("/");
   };
@@ -29,7 +28,7 @@ const Menu = ({ usuarioAdmin, setUsuarioAdmin }) => {
             <NavLink className="nav-link" to={"/"}>
               Inicio
             </NavLink>
-            {usuarioAdmin ? (
+            {usuarioAdmin.token ? (
               <>
                 {/* si el usuario es admin renderiza el componente admin y un btn logout */}
                 <NavLink className="nav-link" to={"/administrador"}>
